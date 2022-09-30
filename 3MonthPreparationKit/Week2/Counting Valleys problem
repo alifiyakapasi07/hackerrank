@@ -1,0 +1,32 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def countingValleys(steps, path):
+    valleys = 0
+    cur_level = 0
+    for steps in path:
+        if(steps == 'U'):     # uphill=U
+            cur_level += 1    #increament value if uphill
+            if(cur_level == 0):
+                valleys += 1
+        elif(steps == 'D'):   # downhill=D
+            cur_level -= 1    # decrement value if downhill
+    return(valleys)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    steps = int(input().strip())
+
+    path = input()
+
+    result = countingValleys(steps, path)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
